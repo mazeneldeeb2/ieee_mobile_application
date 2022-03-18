@@ -1,8 +1,8 @@
-import 'package:app/data_model.dart';
-import 'package:app/unopened_side_box.dart';
+import 'package:app/presentaion/widgets/unopened_side_box.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'data_model.dart';
 import 'open_side_box.dart';
 
 class SideBar extends StatelessWidget {
