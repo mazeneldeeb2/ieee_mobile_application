@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/article.dart';
 import 'article_container.dart';
 
+// ignore: must_be_immutable
 class ArticleListView extends StatelessWidget {
   ArticleListView({Key? key, this.count}) : super(key: key);
   final int? count;

@@ -1,8 +1,7 @@
-import 'package:app/data/article.dart';
 import 'package:flutter/material.dart';
 
 class ArticleContainer extends StatelessWidget {
-  ArticleContainer(
+  const ArticleContainer(
       {Key? key,
       required this.date,
       required this.imageUrl,
