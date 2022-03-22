@@ -99,12 +99,12 @@ class SideBar extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
 
     return Container(
-      width: providerIsClicked ? width / 2.3 : width / 6,
+      width: providerIsClicked ? width / 2.3 : width / 5.8,
       height: height,
       padding: EdgeInsets.only(
-        top: providerIsClicked ? height / 7.0 : height / 8,
-        left: providerIsClicked ? 12 : 8,
-        right: providerIsClicked ? 12 : 8,
+        top: height / 7,
+        left: 10,
+        right: 10,
       ),
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(

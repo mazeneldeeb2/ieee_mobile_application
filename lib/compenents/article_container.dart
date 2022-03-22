@@ -1,11 +1,16 @@
+import 'package:app/data/article.dart';
 import 'package:flutter/material.dart';
 
 class ArticleContainer extends StatelessWidget {
-  const ArticleContainer({Key? key, this.date, this.title, this.imageUrl})
+  ArticleContainer(
+      {Key? key,
+      required this.date,
+      required this.imageUrl,
+      required this.title})
       : super(key: key);
-  final String? title;
-  final String? date;
-  final String? imageUrl;
+  final String title;
+  final String date;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +25,7 @@ class ArticleContainer extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               // ignore: prefer_const_constructors
-              child: Image(
-                  image: const NetworkImage(
-                      'https://sscsalex.org/static/0d35d923e6ed1f15aa24de4f36c4818a/f211f/5eb8b1b08f25030017183661.jpg')),
+              child: Image(image: NetworkImage(imageUrl)),
             ),
           ),
           Container(
@@ -31,14 +34,14 @@ class ArticleContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title ?? "Title",
+                  title,
                   style: const TextStyle(
                       fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 15.0,
                 ),
-                Text(date ?? "1/1/2011")
+                Text(date)
               ],
             ),
           )

@@ -1,4 +1,6 @@
+import 'package:app/data/data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OpenedSideBox extends StatelessWidget {
   const OpenedSideBox({
@@ -33,16 +35,18 @@ class OpenedSideBox extends StatelessWidget {
         const SizedBox(
           width: 25.0,
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 3.0),
-          child: Text(
-            "$title",
-            style: TextStyle(
-                color: textColor ?? const Color.fromARGB(255, 77, 77, 77),
-                fontWeight: FontWeight.bold,
-                fontSize: 16),
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 3.0),
+            child: Text(
+              "$title",
+              style: TextStyle(
+                  color: textColor ?? const Color.fromARGB(255, 77, 77, 77),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
           ),
-        )
+        ),
       ]),
     );
   }
