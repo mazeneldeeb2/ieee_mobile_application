@@ -1,5 +1,4 @@
-import 'package:app/compenents/opened_box.dart';
-import 'package:app/compenents/unopened_side_box.dart';
+import 'package:app/compenents/side_box.dart';
 import 'package:app/data/data.dart';
 import 'package:flutter/material.dart';
 
@@ -23,32 +22,8 @@ class SideBar extends StatelessWidget {
           }
           Provider.of<Data>(context, listen: false).changeIsOpened(isClicked);
         },
-        child: Column(children: const [
-          UnopenedSideBox(
-            boxColor: Color(0xFF4200CF),
-            icon: Icons.home,
-            iconColor: Colors.white,
-          ),
-          UnopenedSideBox(
-            icon: Icons.article,
-          ),
-          UnopenedSideBox(
-            icon: Icons.login,
-          ),
-          UnopenedSideBox(
-            icon: Icons.event,
-          ),
-          UnopenedSideBox(
-            icon: Icons.image,
-          ),
-          UnopenedSideBox(
-            icon: Icons.info,
-          )
-        ]));
-
-    Widget openedBoxes = Column(
-      children: [
-        GestureDetector(
+        child: Column(children: [
+          SideBox(
             onTap: () {
               if (Provider.of<Data>(context, listen: false).isOpened == false) {
                 isClicked = true;
@@ -58,61 +33,60 @@ class SideBar extends StatelessWidget {
               Provider.of<Data>(context, listen: false)
                   .changeIsOpened(isClicked);
             },
-            child: const OpenedSideBox(
-              icon: Icons.home,
-              iconColor: Colors.white,
-              boxColor: Color(0xFF4200CF),
-              title: "Home",
-              textColor: Colors.white,
-            )),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
+            boxColor: const Color(0xFF4200CF),
+            icon: Icons.home,
+            iconColor: Colors.white,
+            title: "Home",
+            titleColor: Colors.white,
+          ),
+          SideBox(
+            onTap: (() => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const ArticleListScreen()));
-          },
-          child: const OpenedSideBox(
+                    builder: (context) => const ArticleListScreen()))),
             icon: Icons.article,
-            title: "Articles",
+            title: "Article",
           ),
-        ),
-        const OpenedSideBox(
-          icon: Icons.login,
-          title: "Login",
-        ),
-        const OpenedSideBox(
-          title: "Events",
-          icon: Icons.event,
-        ),
-        const OpenedSideBox(
-          title: "Gallery",
-          icon: Icons.image,
-        ),
-        const OpenedSideBox(
-          title: "About Us",
-          icon: Icons.info,
-        )
-      ],
-    );
+          const SideBox(
+            icon: Icons.login,
+            title: "Login",
+          ),
+          const SideBox(
+            icon: Icons.event,
+            title: "Events",
+          ),
+          const SideBox(
+            icon: Icons.image,
+            title: "Gallery",
+          ),
+          const SideBox(
+            icon: Icons.info,
+            title: "About us",
+          )
+        ]));
+
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
 
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
       width: providerIsClicked ? width / 2.3 : width / 5.8,
-      height: height,
-      padding: EdgeInsets.only(
-        top: height / 7,
-        left: 10,
-        right: 10,
+      child: Container(
+        width: width / 5.8,
+        height: height,
+        padding: EdgeInsets.only(
+          top: height / 7,
+          left: 10,
+          right: 10,
+        ),
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20.0),
+              bottomRight: Radius.circular(20.0),
+            ),
+            color: Color(0xFF880000)),
+        child: unOpenedBoxes,
       ),
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20.0),
-            bottomRight: Radius.circular(20.0),
-          ),
-          color: Color(0xFF880000)),
-      child: providerIsClicked ? openedBoxes : unOpenedBoxes,
     );
   }
 }
