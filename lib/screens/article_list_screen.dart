@@ -5,6 +5,14 @@ import '../compenents/tab.dart';
 
 class ArticleListScreen extends StatelessWidget {
   const ArticleListScreen({Key? key}) : super(key: key);
+  TabBar get _tabBar => const TabBar(
+        indicatorColor: Color(0xFFBA0C2F),
+        tabs: [
+          CategoryTab(category: "Category 1"),
+          CategoryTab(category: "Category 2"),
+          CategoryTab(category: "Category 3"),
+        ],
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +21,17 @@ class ArticleListScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          bottom: const TabBar(indicatorColor: Color(0xFFBA0C2F), tabs: [
-            CategoryTab(category: "Category 1"),
-            CategoryTab(category: "Category 2"),
-            CategoryTab(category: "Category 3"),
-          ]),
+          bottom: PreferredSize(
+            preferredSize: _tabBar.preferredSize,
+            child: ColoredBox(
+              color: Colors.black,
+              child: _tabBar,
+            ),
+          ),
           elevation: 0,
           leadingWidth: 0,
           centerTitle: false,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           title: Container(
             padding: const EdgeInsets.only(top: 15.0),
             child: const Text(

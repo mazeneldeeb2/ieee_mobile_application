@@ -21,17 +21,22 @@ class ArticleListView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: articles.length,
-      itemBuilder: (context, index) => ArticleContainer(
-        title: articles[index].title,
-        imageUrl: articles[index].imageUrl,
-        date: articles[index].date,
-      ),
-      separatorBuilder: (context, index) => Container(
-        height: 1.0,
-        width: double.infinity,
-        color: Colors.grey[300],
+    return Container(
+      color: Colors.black,
+      child: ListView.separated(
+        itemCount: articles.length,
+        itemBuilder: (context, index) => ArticleContainer(
+          title: articles[index].title,
+          imageUrl: articles[index].imageUrl,
+          date: articles[index].date,
+        ),
+        separatorBuilder: (context, index) => Center(
+          child: Container(
+            height: 1.0,
+            width: 350,
+            color: Colors.grey[300],
+          ),
+        ),
       ),
     );
   }

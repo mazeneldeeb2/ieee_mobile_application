@@ -35,12 +35,17 @@ class ArticleContainer extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.bold),
+                      color: Color(0xFFBA0C2F),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 15.0,
                 ),
-                Text(date)
+                Text(
+                  date,
+                  style: TextStyle(color: Colors.white),
+                )
               ],
             ),
           )
