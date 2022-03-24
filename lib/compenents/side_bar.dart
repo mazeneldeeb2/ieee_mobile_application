@@ -70,9 +70,9 @@ class SideBar extends StatelessWidget {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 150),
-      width: providerIsClicked ? width / 2.3 : width / 5.8,
+      width: providerIsClicked ? width / 2.3 : 65,
+      height: height,
       child: Container(
-        width: width / 5.8,
         height: height,
         padding: EdgeInsets.only(
           top: height / 7,
