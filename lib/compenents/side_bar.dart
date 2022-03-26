@@ -1,10 +1,11 @@
 import 'package:app/compenents/side_box.dart';
 import 'package:app/data/data.dart';
+import 'package:app/screens/course_list_view_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../screens/article_list_screen.dart';
+import '../screens/article_list_view_screen.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -40,24 +41,24 @@ class SideBar extends StatelessWidget {
             titleColor: Colors.white,
           ),
           SideBox(
-            onTap: (() => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ArticleListScreen()))),
+            onTap: (() => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ArticleListView()))),
             icon: Icons.article,
             title: "Article",
           ),
-          const SideBox(
-            icon: Icons.login,
-            title: "Login",
+          SideBox(
+            onTap: (() => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CourseListView()))),
+            icon: Icons.monitor,
+            title: "Courses",
           ),
           const SideBox(
             icon: Icons.event,
             title: "Events",
           ),
           const SideBox(
-            icon: Icons.image,
-            title: "Gallery",
+            icon: Icons.login,
+            title: "Login",
           ),
           const SideBox(
             icon: Icons.info,

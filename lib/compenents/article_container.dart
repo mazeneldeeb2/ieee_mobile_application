@@ -3,18 +3,24 @@ import 'package:flutter/material.dart';
 class ArticleContainer extends StatelessWidget {
   const ArticleContainer(
       {Key? key,
-      required this.date,
-      required this.imageUrl,
-      required this.title})
+      this.date,
+      this.imageUrl,
+      this.title,
+      required this.nextScreen})
       : super(key: key);
-  final String title;
-  final String date;
-  final String imageUrl;
+  final String? title;
+  final String? date;
+  final String? imageUrl;
+  final Widget nextScreen;
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => nextScreen));
+      },
+      child: Container(
         padding: const EdgeInsets.all(20.0),
         width: double.infinity,
         height: MediaQuery.of(context).size.height / 5,
@@ -24,7 +30,7 @@ class ArticleContainer extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               // ignore: prefer_const_constructors
-              child: Image(image: NetworkImage(imageUrl)),
+              child: Image(image: AssetImage('assets/article_image.jpeg')),
             ),
           ),
           Container(
@@ -33,7 +39,7 @@ class ArticleContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  title!,
                   style: const TextStyle(
                       color: Color(0xFFBA0C2F),
                       fontSize: 20.0,
@@ -43,14 +49,14 @@ class ArticleContainer extends StatelessWidget {
                   height: 15.0,
                 ),
                 Text(
-                  date,
-                  style: TextStyle(color: Colors.white),
+                  date!,
+                  style: const TextStyle(color: Colors.white),
                 )
               ],
             ),
           )
         ]),
-      )
-    ]);
+      ),
+    );
   }
 }
