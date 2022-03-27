@@ -16,11 +16,13 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => Data(),
       child: Consumer(
-        builder: (context, value, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: MyHomePage(),
-        ),
-      ),
+          builder: (context, value, child) => MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: Scaffold(
+                  backgroundColor: Colors.black,
+                  body: MyHomePage(),
+                ),
+              )),
     );
   }
 }
