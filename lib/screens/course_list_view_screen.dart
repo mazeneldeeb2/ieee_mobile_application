@@ -38,23 +38,18 @@ class CourseListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          leadingWidth: 0,
-          centerTitle: false,
           backgroundColor: Colors.black,
-          title: Container(
-            padding: const EdgeInsets.only(top: 15.0),
-            child: const Text(
-              "Courses",
-              style: TextStyle(
-                  fontSize: 28,
-                  color: Color(0xFFBA0C2F),
-                  fontWeight: FontWeight.bold),
-            ),
+          centerTitle: false,
+          title: const Text(
+            "Courses",
+            style: TextStyle(
+                color: Color(0xFFBA0C2F),
+                fontSize: 28,
+                fontWeight: FontWeight.bold),
           ),
         ),
         body: IeeeListView(
-          nextSceen: const CourseDetailsScreen(),
+          nextScreen: const CourseDetailsScreen(),
           items: courses,
         ));
   }
