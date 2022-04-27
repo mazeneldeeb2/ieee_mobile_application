@@ -37,6 +37,7 @@ class ArticleListView extends StatelessWidget {
             )),
         body: TabBarView(children: [
           IeeeListView(
+<<<<<<< HEAD
             items: articlesProvider.articles,
           ),
           IeeeListView(
@@ -44,6 +45,18 @@ class ArticleListView extends StatelessWidget {
           ),
           IeeeListView(
             items: articlesProvider.articles,
+=======
+            nextScreen: ArticleDetails(),
+            items: articles,
+          ),
+          IeeeListView(
+            nextScreen: ArticleDetails(),
+            items: articles,
+          ),
+          IeeeListView(
+            nextScreen: ArticleDetails(),
+            items: articles,
+>>>>>>> b3748e591975fa167a2a5a75e22f6f6ccb70fa8d
           ),
         ]),
       ),
