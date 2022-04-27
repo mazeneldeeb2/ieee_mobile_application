@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -35,18 +34,6 @@ class MyApp extends StatelessWidget {
           body: MyHomePage(),
         ),
       ),
-=======
-    return ChangeNotifierProvider(
-      create: (context) => Data(),
-      child: Consumer(
-          builder: (context, value, child) => MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: Scaffold(
-                  backgroundColor: Colors.black,
-                  body: MyHomePage(),
-                ),
-              )),
->>>>>>> b3748e591975fa167a2a5a75e22f6f6ccb70fa8d
     );
   }
 }

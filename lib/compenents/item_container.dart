@@ -6,10 +6,6 @@ class ItemContainer extends StatelessWidget {
     required this.date,
     required this.imageUrl,
     required this.title,
-<<<<<<< HEAD
-=======
-    required this.nextScreen,
->>>>>>> b3748e591975fa167a2a5a75e22f6f6ccb70fa8d
   }) : super(key: key);
   final String title;
   final String date;
@@ -23,7 +19,6 @@ class ItemContainer extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 5,
       child: Row(children: [
         Container(
-<<<<<<< HEAD
           width: MediaQuery.of(context).size.width / 3,
           margin: const EdgeInsets.only(right: 30.0),
           child: ClipRRect(
@@ -32,13 +27,6 @@ class ItemContainer extends StatelessWidget {
               imageUrl,
               errorBuilder: (context, error, stackTrace) => Container(),
             ),
-=======
-          margin: const EdgeInsets.only(right: 30.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            // ignore: prefer_const_constructors
-            child: Image(image: AssetImage('assets/article_image.png')),
->>>>>>> b3748e591975fa167a2a5a75e22f6f6ccb70fa8d
           ),
         ),
         Container(
