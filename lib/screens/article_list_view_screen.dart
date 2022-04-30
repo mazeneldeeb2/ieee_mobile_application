@@ -114,26 +114,26 @@ class _ArticleListViewState extends State<ArticleListView> {
                   fontWeight: FontWeight.bold),
             )),
         body: TabBarView(
-          children: _isFailed
+          children: _isLoading
               ? [
-                  errorWidget(
-                    errorMessege:
-                        "Please make sure you are connected to Internet then restart",
-                  ),
-                  errorWidget(
-                    errorMessege:
-                        "Please make sure you are connected to Internet then restart",
-                  ),
-                  errorWidget(
-                    errorMessege:
-                        "Please make sure you are connected to Internet then restart",
-                  ),
+                  loadingWidget(),
+                  loadingWidget(),
+                  loadingWidget(),
                 ]
-              : _isLoading
+              : _isFailed
                   ? [
-                      loadingWidget(),
-                      loadingWidget(),
-                      loadingWidget(),
+                      errorWidget(
+                        errorMessege:
+                            "Please make sure you are connected to Internet then restart",
+                      ),
+                      errorWidget(
+                        errorMessege:
+                            "Please make sure you are connected to Internet then restart",
+                      ),
+                      errorWidget(
+                        errorMessege:
+                            "Please make sure you are connected to Internet then restart",
+                      ),
                     ]
                   : emptyData
                       ? [

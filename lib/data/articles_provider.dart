@@ -11,7 +11,7 @@ class ArticlesProvider with ChangeNotifier {
   }
 
   static const String articlesApi =
-      'https://ieeeswalexsc.herokuapp.com/api/articles.json';
+      'https://ieeeswalexsc.herokuapp.com/api/articles';
   final url = Uri.parse(articlesApi);
   List<Article> _articles = [];
 
