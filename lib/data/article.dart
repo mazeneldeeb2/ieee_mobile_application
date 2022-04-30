@@ -19,14 +19,4 @@ class Article {
       required this.imageUrl,
       this.content,
       this.id});
-
-  factory Article.fromJson(Map<String, dynamic> json) {
-    Article article = Article(
-        id: json['id'],
-        title: json['attributes']['author'],
-        date: json['attributes']["publishedAt"],
-        imageUrl: json['attributes']["image"],
-        content: json['attributes']["content"]);
-    return article;
-  }
 }

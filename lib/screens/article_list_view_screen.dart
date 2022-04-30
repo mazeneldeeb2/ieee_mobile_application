@@ -34,9 +34,9 @@ class _ArticleListViewState extends State<ArticleListView> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<ArticlesProvider>(context)
-          .fetchArticles()
-          .catchError((error) {
+      Provider.of<ArticlesProvider>(
+        context,
+      ).fetchArticles().catchError((error) {
         return showDialog(
             context: context,
             builder: (context) => AlertDialog(
