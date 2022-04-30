@@ -4,10 +4,13 @@ class Course {
   final String? courseContent;
   final String? courseDescription;
   final String? date;
-  Course(
-      {this.date,
-      this.title,
-      this.imageUrl,
-      this.courseContent,
-      this.courseDescription});
+  final int? id;
+  Course({
+    this.id,
+    this.date,
+    this.title,
+    this.imageUrl,
+    this.courseContent,
+    this.courseDescription,
+  });
 }
