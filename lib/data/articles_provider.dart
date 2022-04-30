@@ -34,20 +34,21 @@ class ArticlesProvider with ChangeNotifier {
     if (json.decode(response.body) != null) {
       try {
         data = json.decode(response.body) as Map<String, dynamic>;
-        var fetchedArticlesList = data['data'];
-        List<Article> loadedArticles = [];
-        for (var article in fetchedArticlesList) {
+        var fetchedData = data['data'];
+        List<Article> fetchedArticles = [];
+        for (var article in fetchedData) {
           Article fetchedArticle = Article(
-            id: article["id"],
+            id: article['id'],
             title: article["attributes"]['author'],
             date: article["attributes"]["publishedAt"],
-            imageUrl: article["attributes"]["image"],
-            content: article["attributes"]["content"],
+            imageUrl: article["attributes"]['image'],
+            content: article["attributes"]['content'],
           );
-          loadedArticles.add(fetchedArticle);
+          fetchedArticles.add(fetchedArticle);
         }
-        _articles = loadedArticles;
+        _articles = fetchedArticles;
         _emptyArticles = false;
+
         notifyListeners();
       } catch (error) {
         rethrow;
