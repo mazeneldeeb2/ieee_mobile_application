@@ -11,7 +11,7 @@ class ArticlesProvider with ChangeNotifier {
   }
 
   static const String articlesApi =
-      'https://ieeeswalexsc.herokuapp.com/api/articles';
+      'https://ieeeswalexsc.herokuapp.com/api/articles.json';
   final url = Uri.parse(articlesApi);
   List<Article> _articles = [];
 
@@ -27,7 +27,7 @@ class ArticlesProvider with ChangeNotifier {
     http.Response response;
     Map<String, dynamic> data;
     try {
-      response = await http.get(url);
+      response = await http.get(url).timeout(const Duration(seconds: 3));
     } catch (error) {
       rethrow;
     }

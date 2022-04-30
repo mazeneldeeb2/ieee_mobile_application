@@ -45,10 +45,10 @@ class _ArticleListViewState extends State<ArticleListView> {
                   actions: [
                     TextButton(
                       onPressed: () {
+                        Navigator.pop(context);
                         setState(() {
                           _isFailed = true;
                         });
-                        Navigator.of(context).pop;
                       },
                       child: const Text("Okay"),
                     ),
@@ -66,29 +66,38 @@ class _ArticleListViewState extends State<ArticleListView> {
     super.didChangeDependencies();
   }
 
+  Widget errorWidget({required String errorMessege}) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      color: Colors.black,
+      child: Center(
+        child: Text(
+          errorMessege,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget loadingWidget() {
+    return Container(
+      color: Colors.black,
+      child: const Center(
+        child: CircularProgressIndicator(
+          color: Color(0xffBA1B1B),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final articlesProvider = Provider.of<ArticlesProvider>(context);
     final emptyData = articlesProvider.emptyArticles;
-    Widget errorWidget({required String errorMessege}) {
-      return Container(
-        color: Colors.black,
-        child: Center(
-          child: Text(errorMessege),
-        ),
-      );
-    }
-
-    Widget loadingWidget() {
-      return Container(
-        color: Colors.black,
-        child: const Center(
-          child: CircularProgressIndicator(
-            color: Color(0xffBA1B1B),
-          ),
-        ),
-      );
-    }
 
     return DefaultTabController(
       length: 3,
@@ -120,23 +129,23 @@ class _ArticleListViewState extends State<ArticleListView> {
                         "Please make sure you are connected to Internet then restart",
                   ),
                 ]
-              : emptyData
+              : _isLoading
                   ? [
-                      errorWidget(
-                          errorMessege:
-                              "There is no Articles right now, please try again later."),
-                      errorWidget(
-                          errorMessege:
-                              "There is no Articles right now, please try again later."),
-                      errorWidget(
-                          errorMessege:
-                              "There is no Articles right now, please try again later."),
+                      loadingWidget(),
+                      loadingWidget(),
+                      loadingWidget(),
                     ]
-                  : _isLoading
+                  : emptyData
                       ? [
-                          loadingWidget(),
-                          loadingWidget(),
-                          loadingWidget(),
+                          errorWidget(
+                              errorMessege:
+                                  "There is no Articles right now, please try again later."),
+                          errorWidget(
+                              errorMessege:
+                                  "There is no Articles right now, please try again later."),
+                          errorWidget(
+                              errorMessege:
+                                  "There is no Articles right now, please try again later."),
                         ]
                       : [
                           IeeeListView(
