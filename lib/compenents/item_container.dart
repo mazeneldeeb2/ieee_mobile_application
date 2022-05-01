@@ -1,24 +1,25 @@
-import 'package:app/screens/articles_details.dart';
 import 'package:flutter/material.dart';
 
 class ItemContainer extends StatelessWidget {
-  const ItemContainer(
-      {Key? key,
-      required this.date,
-      required this.imageUrl,
-      required this.title,
-      required this.id})
-      : super(key: key);
+  const ItemContainer({
+    Key? key,
+    required this.date,
+    required this.imageUrl,
+    required this.title,
+    required this.id,
+    required this.routeName,
+  }) : super(key: key);
   final String title;
   final String date;
   final String imageUrl;
   final int id;
+  final String routeName;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, ArticleDetails.routeName, arguments: id);
+        Navigator.pushNamed(context, routeName, arguments: id);
       },
       child: Container(
         padding: const EdgeInsets.all(20.0),
@@ -49,7 +50,7 @@ class ItemContainer extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
-                  height: 15.0,
+                  height: 20,
                 ),
                 Text(
                   date,

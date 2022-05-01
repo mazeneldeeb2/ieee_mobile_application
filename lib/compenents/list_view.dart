@@ -4,9 +4,10 @@ import 'item_container.dart';
 
 // ignore: must_be_immutable
 class IeeeListView extends StatelessWidget {
-  const IeeeListView({Key? key, required this.items}) : super(key: key);
+  const IeeeListView({Key? key, required this.items, required this.routeName})
+      : super(key: key);
   final List<dynamic> items;
-
+  final String routeName;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,6 +19,7 @@ class IeeeListView extends StatelessWidget {
           title: items[index].title,
           imageUrl: items[index].imageUrl,
           date: items[index].date.toString().substring(0, 10),
+          routeName: routeName,
         ),
         separatorBuilder: (context, index) => Center(
           child: Container(

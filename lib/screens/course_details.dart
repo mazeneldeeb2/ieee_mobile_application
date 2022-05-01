@@ -1,9 +1,16 @@
+import 'package:app/data/courses_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen({Key? key}) : super(key: key);
+  static const String routeName = "/courseDetailsScreen";
   @override
   Widget build(BuildContext context) {
+    final coursesProvider =
+        Provider.of<CoursesProvider>(context, listen: false);
+    final courseId = ModalRoute.of(context)!.settings.arguments as int;
+    final course = coursesProvider.findCourseById(courseId);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -20,28 +27,24 @@ class CourseDetailsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 48,
                 ),
-                Container(
-                  width: 360,
-                  height: 86,
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                  ),
-                  child: const Text(
-                    'Data Structures &\nAlgorithms',
+                Expanded(
+                  child: Text(
+                    course.title,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFBA0C2F),
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Color(0xFFBA0C2F),
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                const Center(
-                  child: Image(
-                    image: AssetImage('assets/article_image.png'),
+                Center(
+                  child: Image.network(
+                    course.imageUrl,
                     alignment: Alignment.center,
                   ),
                 ),

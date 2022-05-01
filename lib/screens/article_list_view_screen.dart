@@ -2,6 +2,7 @@
 
 import 'package:app/compenents/list_view.dart';
 import 'package:app/data/articles_provider.dart';
+import 'package:app/screens/articles_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -150,12 +151,15 @@ class _ArticleListViewState extends State<ArticleListView> {
                       : [
                           IeeeListView(
                             items: articlesProvider.articles,
+                            routeName: ArticleDetails.routeName,
                           ),
                           IeeeListView(
                             items: articlesProvider.articles,
+                            routeName: ArticleDetails.routeName,
                           ),
                           IeeeListView(
                             items: articlesProvider.articles,
+                            routeName: ArticleDetails.routeName,
                           ),
                         ],
         ),
